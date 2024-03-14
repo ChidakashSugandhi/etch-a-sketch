@@ -1,0 +1,27 @@
+.container {
+    width: 960px;
+    height: 960px;
+    /* width: 450px; */
+    /* height: 450px; */
+    display: flex;
+    flex-wrap: wrap;
+    /* box-sizing: border-box; */
+}
+.defaultDiv {
+    height: 60px;
+    width: 60px;   
+    background-color: red;
+    border: none;
+    /* border: solid 1px black;  */
+    flex: 0 0 auto;
+}
+
+
+.hoverDiv {
+    /* height: 60px;
+    width: 60px;    */
+    background-color: blue;
+    border: none;
+    /* border: solid 1px black;  */
+    flex: 0 0 auto;
+}
