@@ -1,0 +1,35 @@
+/* .side-bar{
+    position: fixed;
+} */
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+  }
+img {
+    width: 400px;
+    height: 100vh;
+    
+}
+.side-bar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+.main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+li{
+  flex: 1;
+}
+label { display:block }
