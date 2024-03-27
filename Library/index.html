@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- A form users can use to add new books to the library  -->
+        <form action="/link" method="post" class="side-bar" id = "myForm">
+            <fieldset>
+                <legend>Please Eneter the book details bellow</legend>
+                
+                <ul>
+                    <li>
+                        <label for="book-title">Book Title:</label>
+                        <input type="text" id="book-title" name="book-title">
+                    </li>
+                    <li>
+                        <label for="book-author">Author Name:</label>
+                        <input type="text" id="book-author" name="book-author">
+                    </li>
+                    <li>
+                        <label for="pages">No. of pages:</label>
+                        <input type="text" id="pages" name="pages">
+                    </li>
+                    <li>
+                        <label for="book-status">Status:</label>
+                        <input type="checkbox" id="book-status" name="book-status">
+                    </li>
+                </ul>
+                <label for="submit-button">
+                    <button id="submit-button" name="submit-button">Add Book</button>
+                </label>
+            </fieldset>
+        </form>
+        
+        <!-- Library display  -->
+        <div class="book-rack"></div>
+
+    </div>
+</body>
+</html>
