@@ -1,104 +1,68 @@
-const currentCalculation = [];
 let  currentOperator = "";
-const output = document.querySelector(".keypadContainer")
+let currentNumber = "";
+let numberArray = [];
 
 
+const calculate = (function () {
+    const add = (a,b) => a+b;
+    const sub = (a,b) => a-b;
+    const mul = (a,b) => a*b;
+    const div = (a,b) => a/b;
+    return {add, sub, mul, div}
+})();
 
-document.querySelectorAll(".number").forEach((number) => { 
-    number.addEventListener("click", () =>{            
-            console.log(number.innerText);
-            if (currentCalculation.length <=1){
-                currentCalculation.push(+number.innerText);
-            }
-            // console.log(currentCalculation);
-        });
-});
-
-document.querySelectorAll(".operator").forEach((operator) => {
-        operator.addEventListener("click", () => {
-            console.log(operator.innerText);
-            currentOperator = operator.innerText;
-        });
-});
-
-document.querySelector(".equals").addEventListener("click", () => {
-    console.log(`${currentCalculation[0]} ${currentOperator} ${currentCalculation[1]}`);
-    output.textContent = operate();
-});
-
-document.querySelector(".clear").addEventListener("click", () => {
-    currentCalculation.pop();
-    currentCalculation.pop();
-    currentOperator = "";
-    output.textContent = "Enter a mathametical expression:";
-    console.log(currentCalculation);
-});
-
-
-function add(a,b) {
-    return a+b;
-}
-function subtract(a,b){
-    return a-b;
-}
-function multiply(a,b) {
-    return a*b;
-}
-function divide(a,b) {
-    return a/b;
-}
-
-function operate() {
-    if (currentCalculation.length == 2) {
-        console.log(currentCalculation)
-        switch (currentOperator) {
-            case "+":
-                currentCalculation[0] = (add(currentCalculation[0], currentCalculation[1]));
-                currentCalculation.pop();
-                break;
-            case "-":
-                currentCalculation[0] = (subtract(currentCalculation[0], currentCalculation[1]));
-                currentCalculation.pop();
-                break;
-            case "*":
-                currentCalculation[0] = (multiply(currentCalculation[0], currentCalculation[1]));
-                currentCalculation.pop();
-                break;
-            case "/":
-                currentCalculation[0] = (divide(currentCalculation[0], currentCalculation[1]));
-                currentCalculation.pop();
-                break;
-        } 
-        console.log(currentCalculation)
-        return (currentCalculation[0]);
+const operate = function() {
+    [a, b] = numberArray;
+    switch (currentOperator) {
+        case "+":
+            return calculate.add(a,b);
+            break;
+        case "-":
+            return calculate.sub(a,b);
+            break;
+        case "*":
+            return calculate.mul(a,b);
+            break;
+        case "/":
+            return calculate.div(a,b);
+            break;
     }
 }
 
+const clearTempVariables = function() {
+    currentNumber = "";
+    currentOperator = "";
+}
 
+// ... is called spread operator, here it converts the nodelist into an array.
+const numbers = [...document.querySelectorAll('.numbers')] 
+numbers.map(number => { number.addEventListener('click', () => {
+        currentNumber = currentNumber.concat(number.innerText);
+        console.log(currentNumber);
+    });
+});
 
-// for (let i = 0; i<=9; i++) {
-//     const button = document.querySelector(`.number${i}`);
-//     button.addEventListener("click", () => {
-        
-//         if (currentCalculation.length <=1){
-//             currentCalculation.push(+button.innerText);
-//         }
-//         console.log(currentCalculation)
-    
-//     });
-// }
+const operators = [...document.querySelectorAll('.operators')]
+operators.map(operator => { operator.addEventListener('click', () => {
+        numberArray[1] = (+currentNumber);
+        currentOperator = operator.innerText;
+        console.log(currentOperator);   
+        currentNumber = "";
+    });
+});
 
-// document.querySelector(`.number${1}`).addEventListener("click", () => console.log("test"))
+const equals = document.querySelector('.equals');
+equals.addEventListener('click', () => {
+    numberArray.push(+currentNumber);
+    console.log(numberArray);
+    numberArray[0] = operate();
+    numberArray.pop();
+    console.log(numberArray);
+    clearTempVariables();
+})
 
-
-// document.querySelector(".add").addEventListener("click", (event) => {
-//     currentOperator = "+";
-// })
-
-
-
-
-// document.querySelector(".sub").addEventListener("click", () => console.log("test"))
-// document.querySelector(".multiply").addEventListener("click", () => console.log("test"))
-// document.querySelector(".divide").addEventListener("click", () => console.log("test"))
-// document.querySelector(".clear").addEventListener("click", () => console.log("test"))
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', () => {
+    clearTempVariables();
+    numberArray = [];
+})
