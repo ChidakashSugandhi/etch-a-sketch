@@ -1,0 +1,30 @@
+.head-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-container {
+    display: flex;  
+    background-color: whitesmoke;
+}
+
+.project {
+    background-color: lightblue;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-list {
+    padding: 0;
+}

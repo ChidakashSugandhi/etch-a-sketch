@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script defer src="bundle.js"></script></head>
+<body>
+
+    <header>
+        <div class="head-container">
+            <h1 class="heading">A simple Todo List</h1>
+            <form>
+                <label for="project-name-input"></label>
+                <input type = "text" id = "project-name-input" name="project-name-input" placeholder="Project name">
+                <button type="button" id = "add-project-button">Create</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <div id="main-container">
+            <div class="project">
+                <div class="project-header">
+                    <h2 class="project-heading">General</h2>
+                    <button type="button">Delete</button>
+                </div>
+                <form>
+                    <label for="task-name-input"></label>
+                    <input type = "text" id = "task-name-input" name="task-name-input" placeholder="task name">
+                    <button type="button" class = "add-task-button" id = >Add</button>
+                </form>
+                <div class="task-list-container">
+                    <ul id = "tasklist-${project.id}" class="task-list">
+                        <li class = "task" id = "task.id">
+                            <p class = "task-name">Task Name</p>
+                            <button type="button" class="">Done</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+</body>
+</html>
