@@ -1,9 +1,4 @@
-
-export function createList(projectId, taskList){    
-    return {projectId, taskList}
-}
-
-export function createTask(name, id, listContent, priority) {
-    return {name, id, listContent, priority}
+export function createTask(name, taskStatus) {
+    return {name, taskStatus}
 }
 
