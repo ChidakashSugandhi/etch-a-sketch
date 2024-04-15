@@ -29,7 +29,7 @@ export function screenController() {
         const name = document.querySelector('#project-name-input').value;
         const newProject = createProject(name, {});
         projectStorage.addProject(id, newProject);
-        updateProjectDom();
+        updateDom();
     });
 }
 
@@ -41,6 +41,7 @@ export function updateTaskListners() {
         const taskName = document.querySelector(`#task-input-${projectId}`).value;
         const newTask = createTask(taskName, false);
         projectStorage.addTask(projectId, taskId, newTask);
+        updateDom();
         console.log(projectStorage.getProjects());        
     }));
 }
