@@ -1,10 +1,8 @@
-import { createProject } from './project';
-import {projectStorage} from './localStorage'
-import { createTask } from './list';
-import './style.css';
-import { updateDom, updateProjectDom, updateTaskListDom } from './updateDom';
-
-
+import { createProject } from "./project";
+import { projectStorage } from "./localStorage";
+import { createTask } from "./list";
+import "./style.css";
+import { updateDom, updateProjectDom, updateTaskListDom } from "./updateDom";
 
 // function updateTaskListners() {
 //     const buttonArray = Array.from(document.querySelectorAll('.add-task-button'));
@@ -24,29 +22,33 @@ import { updateDom, updateProjectDom, updateTaskListDom } from './updateDom';
 // }
 
 export function screenController() {
-    document.querySelector('#add-project-button').addEventListener('click', ()=> {
-        const id = (new Date()).getTime();
-        const name = document.querySelector('#project-name-input').value;
-        const newProject = createProject(name, {});
-        projectStorage.addProject(id, newProject);
-        updateDom();
+  document
+    .querySelector("#add-project-button")
+    .addEventListener("click", () => {
+      const id = new Date().getTime();
+      const name = document.querySelector("#project-name-input").value;
+      const newProject = createProject(name, {});
+      projectStorage.addProject(id, newProject);
+      updateDom();
     });
 }
 
 export function updateTaskListners() {
-    const AddtaskButtonArray = Array.from(document.querySelectorAll(".add-task-button"));
-    AddtaskButtonArray.forEach(addButton => addButton.addEventListener("click", function () {
-        const projectId = this.id.split("-")[2];
-        const taskId = (new Date()).getTime();
-        const taskName = document.querySelector(`#task-input-${projectId}`).value;
-        const newTask = createTask(taskName, false);
-        projectStorage.addTask(projectId, taskId, newTask);
-        updateDom();
-        console.log(projectStorage.getProjects());        
-    }));
+  const AddtaskButtonArray = Array.from(
+    document.querySelectorAll(".add-task-button")
+  );
+  AddtaskButtonArray.forEach((addButton) =>
+    addButton.addEventListener("click", function () {
+      const projectId = this.id.split("-")[2];
+      const taskId = new Date().getTime();
+      const taskName = document.querySelector(`#task-input-${projectId}`).value;
+      const newTask = createTask(taskName, false);
+      projectStorage.addTask(projectId, taskId, newTask);
+      updateDom();
+      console.log(projectStorage.getProjects());
+    })
+  );
 }
-
-
 
 // export function listenTask() {
 //     const buttonArray = Array.from(document.querySelectorAll('.add-task-button'));
