@@ -4,7 +4,7 @@ function createNode(data) {
   this.data = data;
   this.next = null;
 }
-
+// This linkedList is a helper factory for the hashmap factory in index.js
 function linkedList(headData) {
   let head = new createNode(headData);
   let tail = head;
@@ -132,7 +132,7 @@ function linkedList(headData) {
 
     for (let i = 1; i <= size; i++) {
       array.push([current.data.key, current.data.value]);
-      console.log(array);
+      // console.log(array); // helps you check how load balancing funcion works
       current = current.next;
     }
     return array;

@@ -3,9 +3,9 @@ import { createNode, linkedList } from "./linkedList.js";
 //https://www.theodinproject.com/lessons/javascript-hashmap
 
 // things remaining:
-// 1. expand the hashmap properely when checking load factor - done
-// 2. replace the old value when data with matching key is entered - done
-// 3. Handle the last value getting lost, "lion" in the bellow example - done
+// 1. expand the hashmap properely when checking load factor - done.
+// 2. replace the old value when data with matching key is entered - done.
+// 3. Handle the last value getting lost, "lion" in the bellow example - done.  
 // 4. Fix issue where when updating a key value pair, the set function is running load balacning - fixed.
 
 // HashMap factory
@@ -36,7 +36,6 @@ function HashMap() {
   const get = function (key) {
     let index = getIndex(key, currentCapacity);
     if (hashMap[index]) {
-      console.log("test");
       return hashMap[index].getValue(key);
     }
     return "The specified key doesn't exist";
@@ -177,7 +176,7 @@ function HashMap() {
 
 // testing hashmap logic:
 
-const test = new HashMap(); // or HashMap() if using a factory
+const test = new HashMap(); 
 
 test.set("apple", "red");
 test.set("banana", "yellow");
@@ -191,8 +190,25 @@ test.set("ice cream", "white");
 test.set("jacket", "blue");
 test.set("kite", "pink");
 test.set("lion", "golden");
+test.set("moon", "siver");
 
+
+// Adding a new key will trigger the load balancing
+test.set("sun", "orange");
+
+// Updating existing keys with new values
 test.set("lion", "blue");
 test.set("kite", "yellow");
 test.set("frog", "green");
 test.set("grape", "green");
+
+// Testing all hashmap functions:
+console.log(test.get("kite"));
+console.log(test.has("sun")); 
+console.log(test.remove("frog"));
+console.log(test.length());
+console.log(test.getKeys());
+console.log(test.getValues());
+console.log(test.getEntries());
+
+
