@@ -20,19 +20,21 @@ function linkedList(headData) {
   };
 
   const append = function (data) {
-    let node = new createNode(data);
 
     // checking if the key already exists in the linked list:
     let current = head;
     do {
       if (current.data.key == data.key) {
         current.data.value = data.value;
+        return ("Updated Existing ndoe");
       }
       current = current.next;
     } while (current != null);
     // default case where the key doesn't exist:
+    let node = new createNode(data);
     tail.next = node;
     tail = node;
+    return ("Created a new node");
   };
 
   // Get the current head of the linked list, temp function remove it later

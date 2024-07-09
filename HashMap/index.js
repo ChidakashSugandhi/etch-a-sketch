@@ -4,8 +4,9 @@ import { createNode, linkedList } from "./linkedList.js";
 
 // things remaining:
 // 1. expand the hashmap properely when checking load factor - done
-// 2. replace the old value when data with matching key is entered - done (test pending)
+// 2. replace the old value when data with matching key is entered - done
 // 3. Handle the last value getting lost, "lion" in the bellow example - done
+// 4. Fix issue where when updating a key value pair, the set function is running load balacning - fixed.
 
 // HashMap factory
 function HashMap() {
@@ -25,8 +26,10 @@ function HashMap() {
       hashMap[index] = new linkedList(data);
       noOfEntries += 1;
     } else {
-      hashMap[index].append(data);
-      noOfEntries += 1;
+      if (hashMap[index].append(data) === "Created a new node") {
+        noOfEntries += 1;
+      }
+      // the above if statement is appending and also checking if key already exists
     }
   };
 
@@ -114,7 +117,7 @@ function HashMap() {
 
   // check load and grow the hashmap array if needed .
   function loadBalance() {
-    if (noOfEntries >= currentCapacity * loadFactor) {
+    if (noOfEntries > currentCapacity * loadFactor) {
       let newCapacity = currentCapacity * 2;
       let entriesArray = getEntries();
       let newHashMap = new Array(newCapacity);
@@ -172,6 +175,8 @@ function HashMap() {
   };
 }
 
+// testing hashmap logic:
+
 const test = new HashMap(); // or HashMap() if using a factory
 
 test.set("apple", "red");
@@ -187,19 +192,7 @@ test.set("jacket", "blue");
 test.set("kite", "pink");
 test.set("lion", "golden");
 
-test.set("moon", "silver");
-
-console.log(test.get("grape"));
-
-// console.log(test.has("elephant"));
-// console.log(test.has("frog"));
-// console.log(test.get("grape"));
-// console.log(test.get("kite"));
-// console.log(test.remove("kite"));
-console.log(test.get("lion"));
-// console.log(test.length());
-// console.log(test.getEntries());
-
-// console.log(hashMap1.getKeys());
-// console.log(hashMap1.getValues());
-// console.log(hashMap1.getEntries());
+test.set("lion", "blue");
+test.set("kite", "yellow");
+test.set("frog", "green");
+test.set("grape", "green");
