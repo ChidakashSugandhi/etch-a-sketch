@@ -1,32 +1,36 @@
 // Balanced bst: https://www.theodinproject.com/lessons/javascript-binary-search-trees
+import { constructBST } from "./bst_builder.js"
+import { prettyPrint, insert, deleteItem, find, levelOrder, inOrder, preOrder, postOrder } from "./bst_functions.js"
+// import { constructBST } from "./linkedList.js";
 
-// Node factory
-function Node (data) {
-    return {left: null, data: data, right: null};
-}
+// To-Do:
+// for delete item manage case of deleting the root node it-self
 
-// Tree factory 
-function Tree (array) {
-    // sorting and removing duplicates from our array
-    array = uniq (array.sort());
-    function buildTree(array) {
-        var half_length = Math.ceil(arrayName.length / 2);    
-        var leftSide = arrayName.slice(0,half_length);
-        buildTree (leftArray);
-        buildTree (rightArray);
-        if () {
-            return root;
-        }
-    }
+let array = [4, 4, 1, 2, 3, 6, 7, 8, 8, 9];
+let bstRoot = constructBST(array);
 
-    // internal funcitons
-    // remove any duplicates from the array:
-    function uniq(array) {
-        let seen = {};
-        return array.filter(function(item) {
-            return seen.hasOwnProperty(item) ? false : (seen[item] = true);
-        });
-    }
+prettyPrint(bstRoot);
+insert (bstRoot, 5);
+prettyPrint(bstRoot);
+// deleteItem (bstRoot, 2);
+prettyPrint(bstRoot);
+let requiredNode = find (bstRoot, 10)
+console.log (requiredNode);
+
+
+function greaterThanFour (value) {
+    return value > 4;
 }
 
 
+let levelArray = levelOrder (bstRoot, greaterThanFour);
+console.log (levelArray);
+
+let inOrderArray = inOrder (bstRoot, greaterThanFour);
+console.log (inOrderArray)
+
+let preOrderArray = preOrder (bstRoot, greaterThanFour);
+console.log (preOrderArray)
+
+let postOrderArray = postOrder (bstRoot, greaterThanFour);
+console.log (postOrderArray)

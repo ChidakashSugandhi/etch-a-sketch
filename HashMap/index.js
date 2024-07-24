@@ -178,6 +178,7 @@ function HashMap() {
 
 const test = new HashMap(); 
 
+// adding key value pairs to the hashmap
 test.set("apple", "red");
 test.set("banana", "yellow");
 test.set("carrot", "orange");
@@ -193,7 +194,7 @@ test.set("lion", "golden");
 test.set("moon", "siver");
 
 
-// Adding a new key will trigger the load balancing
+// Adding another key will trigger the load balancing and expand hashmap
 test.set("sun", "orange");
 
 // Updating existing keys with new values
