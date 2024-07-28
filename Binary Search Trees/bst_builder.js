@@ -1,13 +1,15 @@
-export {constructBST};
+export { constructBST };
 import { uniq, Node } from "./helpers.js";
 
 // creates a bst and returns the root node of the tree
 function constructBST(arr) {
+  // sorting and removing duplicates from our array
+  // the arrow funciton in the sort is because sort treats elements as strings by default
+  let array = uniq(arr.sort((a, b) => a - b));
 
-// sorting and removing duplicates from our array
-  let array = uniq(arr.sort()); 
+  // console.log (array.sort())
 
-// a recursive function to build a balanced binary search tree from any given array
+  // a recursive function to build a balanced binary search tree from any given array
   function buildTree(array, start, end) {
     if (start > end) {
       return null;
